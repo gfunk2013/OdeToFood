@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Download";
+    Html.RenderPartial("_RouteView");
+    if (ViewBag.fileNames != null && ViewBag.fileNames.Length != 0)
+    {
+        foreach (string _fileName in ViewBag.fileNames)
+        {
+            <br />
+            @Html.ActionLink(_fileName, "DownloadFile", new { fileName = _fileName })
+            <br />
+        }
+    }
+    else
+    {
+        <label>No File to Download</label>
+    }
+}
+
+<h2>Download</h2>

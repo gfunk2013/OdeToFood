@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head runat=server>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" media="screen" />
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href=@Url.Action("Index","Home",null)> Ode To Food</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.Action("Index", "Home", null)> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.Action("About", "Home", null)>About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.Action("Contact", "Home", null)>Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.Action("Index", "Restaurants", null)>Restaurants</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
+                        Cuisine
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href=@Url.Action( "Search", "Cuisine", new { name = "Italian"})>Italian</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href=@Url.Action( "Search", "Cuisine", new { name = "Japanese"})>Japanese</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href=@Url.Action( "Search", "Cuisine", new { name = "Greek"})> Greek</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.Action("Download", "File", null)>Download Files</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=@Url.Action("Upload","File" , null)>Upload Files</a>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <hr />
+    <div class="container body-content">
+        <h1>Page: @ViewBag.Title</h1>
+
+        <section class="clearfix">
+            @RenderBody()
+        </section>
+        <div class="modal">
+            <!-- Place at bottom of page-->
+        </div>
+        <hr />
+        @RenderSection("featured", required: false)
+        <hr />
+
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

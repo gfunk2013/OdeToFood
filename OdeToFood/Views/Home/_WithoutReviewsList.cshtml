@@ -1,0 +1,38 @@
+﻿@model IPagedList<RestaurantViewModel>
+
+<div id="withoutReviews">
+
+    <div id="withoutReviewsPager">
+        <div class="pagedList" data-otf-target="#withoutReviews">
+            @Html.PagedListPager(Model,
+           withoutReviewsPage => Url.Action("Index", new { withoutReviewsPage }),
+           PagedListRenderOptions.MinimalWithItemCountText)
+        </div>
+    </div>
+
+    <h3>
+        Restaurants without Reviews
+    </h3>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="thead-light">
+                    Restaurant Name
+                </th>
+                <th>
+                    Restaurant Location
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var restaurant in Model)
+            {
+                <tr>
+                    <td>@restaurant.Name</td>
+                    <td>@restaurant.City, @restaurant.Country</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

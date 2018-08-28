@@ -1,0 +1,28 @@
+﻿<h2>Route Data: </h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Path Object
+            </th>
+            <th>
+                Value
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.RouteData)
+        {
+            <tr>
+                <td>@item.Key</td>
+                <td>@item.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <h2>Best Review</h2>
+    @Html.Action("BestReview", "Reviews")
+</div>

@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Upload";
+    Html.RenderPartial("_RouteView");
+}
+
+<div>
+    <input type="file" id="files" multiple="multiple" />
+    <input type="button" id="upload" value="Upload" />
+</div>
+
+<script>
+    $body = $("body");
+
+    $(document).ready(function () {
+
+        $("#upload").click(function () {
+            let data = new FormData();
+
+            //Add the selected files into the data object
+
+            var files = $("#files").get(0).files;
+            for (i = 0; i < files.length; i++) {
+                data.append(files[i].name , files[i]);
+            }
+
+            //Post the data (files) to the server
+
+            if (files.length > 0) {
+                $.ajax({
+                    type: 'POST',
+                    url: "@Url.Action("Upload")",
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    success: function (returnData) {
+                        console.log("success in jquery");
+                        if (returnData.status == "fail") {
+                            alert("Error: " + returnData.data);
+                        } else {
+                            alert("Files were successfully added!");
+                        }
+
+                    },
+                    error: function (returnData) {
+                        console.log("fail in jquery");
+                        console.log(returnData);
+                    }
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,18 @@
+﻿@model OdeToFood.Models.RestaurantListViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+
+    Html.RenderPartial("_RouteView");
+    <hr />
+    Html.RenderPartial("_SearchView");
+    <hr />
+}
+
+@section featured{
+    This is fhe featured section
+}
+
+@Html.Partial("_WithReviewsList", Model.withReviews)
+
+@Html.Partial("_WithoutReviewsList", Model.withoutReviews)

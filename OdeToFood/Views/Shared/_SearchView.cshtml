@@ -1,0 +1,26 @@
+﻿@*<form class="form-inline my-2 my-lg-0" method="get">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchTerm">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>*@
+
+@*@using (Ajax.BeginForm(null, null,
+        new AjaxOptions
+        {
+            HttpMethod = "get",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "restaurantList"
+        },
+        new { @class = "form-inline my-2 my-lg-0" }))
+    {
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchTerm">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    }*@
+
+<form class="form-inline my-2 my-lg-0"
+      method="get" action="@Url.Action("Index")"
+      data-otf-ajax="true" data-otf-target="#restaurantList">
+
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" name="searchTerm"
+           data-otf-autocomplete="@Url.Action("AutoComplete")">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
